@@ -148,7 +148,7 @@ Respects font changes."
 (defun pj--get-string-tokens ()
   "Split the current line in string tokens."
   (flet ((push-char () (push char token))
-         (push-tok-char () (push (reverse token) tokens) (setq token (list char))))
+         (push-tok-char () (when token (push (reverse token) tokens)) (setq token (list char))))
     (let ((line (string-to-list (pj-line-at-point)))
           (tokens nil)
           (token nil)
